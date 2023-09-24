@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Do not give up - number converter</title>
+  </head>
+  <body>
+    <form id="number-form">
+      <input
+        id="from-type"
+        list="number-type"
+        onfocus="this.value=''"
+        placeholder="from type"
+      />
+      <input
+        id="to-type"
+        list="number-type"
+        onfocus="this.value=''"
+        placeholder="to type"
+      />
+      <br />
+      <input id="from-number" />
+      <input id="to-number" />
+      <button>GO</button>
+    </form>
+  </body>
+  <datalist id="number-type">
+    <option value="Binary"></option>
+    <option value="Octal"></option>
+    <option value="Decimal"></option>
+    <option value="Hexadecimal"></option>
+  </datalist>
+  <script src="index.js"></script>
+</html>
