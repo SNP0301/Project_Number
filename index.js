@@ -1,22 +1,20 @@
 const form = document.querySelector("#number-form");
-
 const fromType = form.querySelector("#from-type");
 const fromNumber = form.querySelector("#from-number");
-
 const toType = form.querySelector("#to-type");
 const toNumber = form.querySelector("#to-number");
 const typeNumberMatchingError = [
   "Each number of binary number should be less than 2",
   "Each number of binary number should be less than 9",
   "No ENGLISH",
+  "FINALLLLLLLLL",
 ];
+
 function onFormSubmit(event) {
   event.preventDefault();
   console.log(typeof fromNumber.value);
-
   console.log("DECIMAL RESULT: " + calculateDecimal(fromNumber.value));
 }
-
 function calculateDecimal(fromNumber) {
   event.preventDefault();
   if (fromType.value === "Binary") {
@@ -41,11 +39,14 @@ function calculateDecimal(fromNumber) {
       // fromNumber 비우는 함수 추가
     }
   } else if (fromType.value === "Hexadecimal") {
-    console.log("DIFFICULT");
+    if (typeNumberMatch(fromNumber, fromType.value)) {
+      return hexadecimalToDecimal(fromNumber);
+    } else {
+      console.log(typeNumberMatchingError[3]);
+    }
+    return "OUT OF THE CASES";
   }
-  return "OUT OF THE CASES";
 }
-
 function typeNumberMatch(inputNumber, inputType) {
   if (inputType === "Binary") {
     for (var i = 0; i < inputNumber.length; i++) {
@@ -70,9 +71,14 @@ function typeNumberMatch(inputNumber, inputType) {
       }
     }
     return true;
+  } else if (inputType === "Hexadecimal") {
+    for (var i = 0; i < inputNumber.length; i++) {
+      if (inputNumber[i] > 98) {
+        //"a" = 97, "z" = 122
+      }
+    }
   }
 }
-
 function binaryToDecimal(b) {
   d = 0;
   b = b.toString();
@@ -81,7 +87,7 @@ function binaryToDecimal(b) {
   }
   return d;
 }
-////
+
 function octalToDecimal(o) {
   d = 0;
   o = o.toString();
