@@ -12,7 +12,9 @@ const typeNumberMatchingError = [
 
 function onFormSubmit(event) {
   event.preventDefault();
-  console.log("DECIMAL RESULT: " + calculateDecimal(fromNumber.value));
+  if (fromNumber.value === "0") {
+    console.log("123");
+  }
   decimalResult = calculateDecimal(fromNumber.value);
   console.log("TOTAL RESULT: " + calculateResult(decimalResult, toType.value));
 }
@@ -59,7 +61,7 @@ function typeNumberMatch(inputNumber, inputType) {
     return true;
   } else if (inputType === "Octal") {
     for (var i = 0; i < inputNumber.length; i++) {
-      if (inputNumber[i] >= 9) {
+      if (inputNumber[i] >= 8) {
         return false;
       }
     }
@@ -100,7 +102,13 @@ function octalToDecimal(o) {
 function calculateResult(inputDecimal, outputType) {
   if (outputType == "Decimal") {
     return inputDecimal;
+  } else if (outputType == "Binary") {
+    return decimalToBinary(inputDecimal);
   }
+}
+function decimalToBinary(d) {
+  b_length = 1;
+  console.log(b_length);
 }
 
 form.addEventListener("submit", onFormSubmit);
