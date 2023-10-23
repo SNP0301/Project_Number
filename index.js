@@ -5,7 +5,7 @@ const toType = form.querySelector("#to-type");
 const toNumber = form.querySelector("#to-number");
 const typeNumberMatchingError = [
   "Each number of binary number should be less than 2",
-  "Each number of binary number should be less than 9",
+  "Each number of binary number should be less than 8",
   "No ENGLISH",
   "FINALLLLLLLLL",
 ];
@@ -13,7 +13,7 @@ const typeNumberMatchingError = [
 function onFormSubmit(event) {
   event.preventDefault();
   if (fromNumber.value === "0") {
-    console.log("123");
+    console.log("Input number is ZERO!");
   }
   decimalResult = calculateDecimal(fromNumber.value);
   console.log("TOTAL RESULT: " + calculateResult(decimalResult, toType.value));
@@ -107,8 +107,28 @@ function calculateResult(inputDecimal, outputType) {
   }
 }
 function decimalToBinary(d) {
+  console.log("Decimal is ", d, typeof d);
+  d = d.toNumber();
   b_length = 1;
-  console.log(b_length);
-}
+  b = "";
+  b_power = 0;
+  while (true) {
+    if (2 ** b_power < d) {
+      b_power += 1;
+    } else {
+      break;
+    }
 
+    for (var i = b_power - 1; i >= 0; i--) {
+      if (d / 2 ** i >= 1) {
+        b += "1";
+        d -= 2 ** i;
+      } else {
+        b += "0";
+      }
+    }
+    console.log(b);
+    return b;
+  }
+}
 form.addEventListener("submit", onFormSubmit);
