@@ -113,13 +113,21 @@ function decimalToBinary(d) {
   while (true) {
     if (d > 2 ** b_power - 1) {
       b_power += 1;
-      console.log("b_power is: ", b_power);
     } else {
-      console.log(d, "is greater than", 2 ** b_power);
       break;
     }
   }
-  console.log("b power is: ", b_power);
+
+  for (var i = b_power - 1; i >= 0; i--) {
+    if (Math.floor(d / 2 ** i) == 1) {
+      b = b + "1";
+      d -= 2 ** i;
+    } else {
+      b = b + "0";
+    }
+    console.log(i, b);
+  }
+  console.log(b);
   return b;
 }
 
