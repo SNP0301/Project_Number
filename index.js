@@ -107,28 +107,20 @@ function calculateResult(inputDecimal, outputType) {
   }
 }
 function decimalToBinary(d) {
-  console.log("Decimal is ", d, typeof d);
-  d = d.toNumber();
-  b_length = 1;
+  d = Number(d);
   b = "";
   b_power = 0;
   while (true) {
-    if (2 ** b_power < d) {
+    if (d > 2 ** b_power - 1) {
       b_power += 1;
+      console.log("b_power is: ", b_power);
     } else {
+      console.log(d, "is greater than", 2 ** b_power);
       break;
     }
-
-    for (var i = b_power - 1; i >= 0; i--) {
-      if (d / 2 ** i >= 1) {
-        b += "1";
-        d -= 2 ** i;
-      } else {
-        b += "0";
-      }
-    }
-    console.log(b);
-    return b;
   }
+  console.log("b power is: ", b_power);
+  return b;
 }
+
 form.addEventListener("submit", onFormSubmit);
