@@ -1,3 +1,5 @@
+//import { decimalToBinary, decimalToOctal } from "./decimalTo.js";
+
 const form = document.querySelector("#number-form");
 const fromType = form.querySelector("#from-type");
 const fromNumber = form.querySelector("#from-number");
