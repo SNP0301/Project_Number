@@ -104,6 +104,8 @@ function calculateResult(inputDecimal, outputType) {
     return inputDecimal;
   } else if (outputType == "Binary") {
     return decimalToBinary(inputDecimal);
+  } else if (outputType == "Octal") {
+    return decimalToOctal(inputDecimal);
   }
 }
 function decimalToBinary(d) {
@@ -125,10 +127,29 @@ function decimalToBinary(d) {
     } else {
       b = b + "0";
     }
-    console.log(i, b);
   }
   console.log(b);
   return b;
+}
+
+function decimalToOctal(d) {
+  d = Number(d);
+  o = "";
+  o_power = 0;
+  while (true) {
+    if (d > 8 ** o_power - 1) {
+      o_power += 1;
+    } else {
+      break;
+    }
+  }
+  console.log(o_power);
+  for (var i = o_power - 1; i >= 0; i--) {
+    o = o + String(Math.floor(d / 8 ** i));
+    d -= Math.floor(d / 8 ** i) * 8 ** i;
+  }
+  console.log(o);
+  return o;
 }
 
 form.addEventListener("submit", onFormSubmit);
