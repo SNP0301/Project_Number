@@ -16,7 +16,8 @@ function onFormSubmit(event) {
     console.log("Input number is ZERO!");
   }
   decimalResult = calculateDecimal(fromNumber.value);
-  console.log("TOTAL RESULT: " + calculateResult(decimalResult, toType.value));
+
+  toNumber.value = calculateResult(decimalResult, toType.value);
 }
 
 function calculateDecimal(fromNumber) {
@@ -126,9 +127,9 @@ function decimalToBinary(d) {
       d -= 2 ** i;
     } else {
       b = b + "0";
+      1;
     }
   }
-  console.log(b);
   return b;
 }
 
@@ -143,12 +144,10 @@ function decimalToOctal(d) {
       break;
     }
   }
-  console.log(o_power);
   for (var i = o_power - 1; i >= 0; i--) {
     o = o + String(Math.floor(d / 8 ** i));
     d -= Math.floor(d / 8 ** i) * 8 ** i;
   }
-  console.log(o);
   return o;
 }
 
